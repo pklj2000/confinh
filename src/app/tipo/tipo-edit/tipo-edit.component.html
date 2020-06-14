@@ -1,0 +1,40 @@
+
+<mat-card>
+    <form [formGroup]="tipoForm" (ngSubmit)="onSubmit()" class="container">
+      <div class="row">
+      <div class="form-group col-lg-3">
+        <label>Código</label>
+        <input formControlName="id" matInput class="form-control" />    
+      </div>
+      <div class="form-group col-lg-9">
+          <label>Nome</label>
+          <input formControlName="nome" matInput class="form-control" />    
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-lg-12">
+        <label>Classe</label>
+        <mat-select  formControlName="classe" class="form-control">
+          <mat-option value="CC">Conta Corrente</mat-option>
+          <mat-option value="RF">Renda Fixa</mat-option>
+          <mat-option value="RV">Renda Variável</mat-option>
+          <mat-option value="HE">Hedge</mat-option>
+       </mat-select>
+      </div>
+    </div>  
+    <div class="row">
+      <div class="form-group col-lg-3">
+          <mat-checkbox formControlName="ativo"></mat-checkbox>
+          <label style="padding-left: 10px;">Ativo</label>
+      </div>
+      <div class="form-group col-lg-9">
+          <label>Ordem Exibição</label>
+          <input formControlName="ordem" matInput class="form-control" />    
+    
+      </div>
+    </div>
+      <button type="submit" class="btn btn-primary">Salvar</button>
+      <button class="btn btn-secondary" routerLink="/tipo" style="margin-left: 10px">Cancelar</button>
+    </form>
+    </mat-card>
+    

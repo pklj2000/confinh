@@ -1,0 +1,9 @@
+table {
+    width: 100%;
+  }
+
+  p.big {
+    line-height: 1.8;
+    padding-top: 20px;
+  }
+

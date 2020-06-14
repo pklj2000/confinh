@@ -1,0 +1,17 @@
+<table class="table table-striped">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">Aplicação</th>
+      <th scope="col">Cnpj</th>
+      <th scope="col"><p class="text-right">Proventos Acumulados</p></th>
+    </tr>
+  </thead>
+  <ng-container *ngFor="let item of proventos">  
+    <tr *ngIf="item.valorTotal != 0">
+    <td>{{item.aplicacao.codigo}}</td>
+    <td>{{item.aplicacao.cnpj}}</td>
+    <td><p class="text-right">{{item.valorTotal | number:'1.2-2'}}</p></td>  
+    </tr>
+  </ng-container>  
+</table>
+{{dataini}}-{{datafim}}

@@ -1,0 +1,16 @@
+<p>
+  Lista de Aplicações
+</p>
+
+<table>
+  <tr *ngFor="let movimento of movimentos">
+  <td>{{movimento.idAplicacao}}</td>
+  <td>{{movimento.data | date: 'yyyy-MM-dd'}}</td>
+  <td>{{movimento.banco.nome}}</td>
+  <td>{{movimento.aplicacao.codigo}}</td>
+  <td>{{movimento.idTipoMovimento}}</td>
+  <td>{{movimento.quantidade}}</td>
+  <td>{{movimento.valorUn}}</td>
+  <td>{{movimento.valorTotal}}</td>  
+  </tr>
+</table>

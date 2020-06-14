@@ -1,0 +1,63 @@
+<mat-card class="card_filtro">
+  <div class="form-group">
+    <div class="row">
+      <div class='col-lg-3 form-inline'>
+        <label style="margin-right: 10px;">Data Final: </label>
+        <input matInput [matDatepicker]="pickerFim" placeholder="Data" class="form-control" [(ngModel)]="dataCorte"
+          style="width:80%">
+        <mat-datepicker-toggle matSuffix [for]="pickerFim"></mat-datepicker-toggle>
+        <mat-datepicker #pickerFim></mat-datepicker>
+      </div>
+      <div class="col-lg-6">
+        <button class="btn btn-primary" (click)="ObterEstoqueEstoqueSetor()" style="margin-top: 30px;">Filtrar</button>
+      </div>
+    </div>
+  </div>
+</mat-card>
+<p></p>
+<ng-container *ngFor="let tipos of estoques">
+  {{tipos.descrtipo}}
+  <table class="table table-striped">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">Setor</th>
+        <th scope="col">
+          <p class="text-right">Total</p>
+        </th>
+        <th scope="col">%</th>
+        <th scope="col">Detalhe</th>
+      </tr>
+    </thead>
+    <ng-container *ngFor="let item of tipos.itens; let irow= index">
+      <tr>
+        <td>{{item.descrsetor}}</td>
+        <td>
+          <p class="text-right">{{item.total | number:'1.2-2'}}</p>
+        </td>
+        <td>{{item.percentual | number:'1.2-2'}}</td>
+        <td> <button mat-mini-fab color="primary" aria-label="Exibir ativos" (click)="detailVisible[irow]=!detailVisible[irow]">
+              <mat-icon>filter_list</mat-icon>
+            </button>
+      </td>
+      </tr>
+      <tr [hidden]="!detailVisible[irow]">
+        <table class="table table-striped">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col">Aplicação</th>
+              <th scope="col">
+                <p class="text-right">Total</p>
+              </th>
+            </tr>
+          </thead>
+          <ng-container *ngFor="let itemaplicacao of item.aplicacoes">
+            <tr>
+              <td>{{itemaplicacao.descraplicacao}}</td>
+              <td>{{itemaplicacao.total | number:'1.2-2'}}</td>
+            </tr>
+          </ng-container>
+        </table>
+      </tr>
+    </ng-container>
+  </table>
+</ng-container>

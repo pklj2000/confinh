@@ -1,0 +1,66 @@
+<mat-card class="card_filtro">
+  <div class="form-group">
+    <div class="row">
+        <div class="col-lg-6">
+          <label>Data</label>
+          <mat-select [(ngModel)]="dataFiltro" class="form-control">
+            <mat-option *ngFor="let data of datas" [value]="data.data | date: 'yyyy-MM-dd'">
+                {{data.data | date: 'dd/MM/yyyy'}}
+            </mat-option>
+          </mat-select>
+        </div>
+        <div class="col-lg-6">
+          <button class="btn btn-primary" (click)="data_onChange()" style="margin-top: 30px;">Filtrar</button>
+        </div>
+    </div>
+  </div>
+</mat-card>
+<br>
+<mat-card class="card">
+  <mat-card-header class="card_title">
+     Total Geral 
+  </mat-card-header>
+  <mat-card-content class="card_content-centered">
+    <span style="font-size: larger">{{valorTotal | number:'1.2-2'}}</span>
+  </mat-card-content>
+</mat-card>
+<br>
+<mat-card class="card">
+  <mat-card-header class="card_title">
+     Total por Banco 
+  </mat-card-header>
+  <mat-card-content class="card_content-centered">
+    <table class="table">
+      <th>Banco</th>
+      <th>Total</th>
+      <th>Percentual</th>
+      <ng-container *ngFor="let banco of posicaoBanco">
+        <tr>
+          <td>{{banco.texto}}</td>
+          <td>{{banco.valor | number:'1.2-2'}}</td>
+          <td>{{banco.percentual | number:'1.2-2'}}</td>
+        </tr>
+      </ng-container>
+    </table>
+  </mat-card-content>
+</mat-card>
+<br>
+<mat-card class="card">
+  <mat-card-header class="card_title">
+     Total por Tipo de Aplicação 
+  </mat-card-header>
+  <mat-card-content class="card_content-centered">
+    <table class="table">
+      <th>Banco</th>
+      <th>Total</th>
+      <th>Percentual</th>
+      <ng-container *ngFor="let tipo of posicaoTipo">
+        <tr>
+          <td>{{tipo.texto}}</td>
+          <td>{{tipo.valor | number:'1.2-2'}}</td>
+          <td>{{tipo.percentual | number:'1.2-2'}}</td>
+        </tr>
+      </ng-container>
+    </table>
+  </mat-card-content>
+</mat-card>

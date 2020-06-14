@@ -1,0 +1,27 @@
+<form [formGroup]="ProventoImportForm" class="container">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>Ler Proventos</mat-card-title>
+    </mat-card-header>
+    <mat-card-actions>
+      <p class="big">
+        <button type="button" class="btn btn-danger" (click)="LerProventos()"> Ler Proventos </button>
+        </p> 
+  </mat-card-actions>
+  </mat-card>
+
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>Importar Proventos</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <textarea formControlName="content" matInput class="form-control" rows="10" ></textarea>
+  </mat-card-content>
+  <mat-card-actions>
+    <p class="big">
+      <button type="button" class="btn btn-primary" (click)="ImportarProventos()"> Importar Proventos</button>
+      </p> 
+</mat-card-actions>
+</mat-card>
+</form>
+{{index}}

@@ -1,0 +1,11 @@
+<p>
+  Lista de Aplicações
+</p>
+
+<table>
+  <tr *ngFor="let aplicacao of aplicacoes">
+  <td>{{aplicacao.id}}</td>
+  <td>{{aplicacao.codigo}}</td>
+  <td>{{aplicacao.tipo.nome}}</td>
+  </tr>
+</table>

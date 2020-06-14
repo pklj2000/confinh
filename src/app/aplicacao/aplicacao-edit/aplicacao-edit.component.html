@@ -1,0 +1,54 @@
+
+<mat-card>
+    <form [formGroup]="aplicacaoForm" (ngSubmit)="onSubmit()" class="container">
+
+      <div class="row">
+        <div class="form-group col-lg-6">
+          <label>Tipo</label>
+          <select id="selTipo" class="form-control" formControlName="idtipo">
+              <option value="0"></option>
+              <option *ngFor="let tipo of tipos | async" [ngValue]="tipo.id">{{tipo.nome}}</option>
+          </select>
+      </div>   
+    </div>
+
+      <div class="row">
+      <div class="form-group col-lg-3">
+        <label>Código</label>
+        <input formControlName="codigo" matInput class="form-control" #input [value]="input.value.toUpperCase()" />    
+      </div>
+      <div class="form-group col-lg-9">
+          <label>Nome</label>
+          <input formControlName="nome" matInput class="form-control" />    
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-lg-3">
+        <label>Cnpj</label>
+        <input formControlName="cnpj" matInput class="form-control" />    
+      </div>
+      <div class="form-group col-lg-5">
+        <label>Setor</label>
+        <select id="selSetor" class="form-control" formControlName="idsetor">
+          <option value="0"></option>
+          <option *ngFor="let setor of setores | async" [ngValue]="setor.id">{{setor.nome}}</option>
+      </select>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="form-group col-lg-3">
+          <mat-checkbox formControlName="ativo"></mat-checkbox>
+          <label style="padding-left: 10px;">Ativo</label>
+      </div>
+      <div class="form-group col-lg-9">
+          <label>Ordem Exibição</label>
+          <input formControlName="ordem" matInput class="form-control" />    
+      </div>
+    </div>
+      <button type="submit" class="btn btn-primary" >Salvar</button>
+      <button class="btn btn-secondary" routerLink="/aplicacao" style="margin-left: 10px">Cancelar</button>
+
+    </form>    
+  </mat-card>
+    

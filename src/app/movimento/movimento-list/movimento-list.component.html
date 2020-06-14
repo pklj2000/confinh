@@ -1,0 +1,105 @@
+<mat-card class="card_filtro">
+    <div class="form-group">
+      <div class="row">
+          <div class="col-lg-6">
+            <label>Banco</label>
+            <mat-select  [(ngModel)]="bancoFiltro" class="form-control">
+              <mat-option *ngFor="let data of bancos" [value]="data.id">
+                  {{data.nome}}
+              </mat-option>
+            </mat-select>
+          </div>
+          <div class="col-lg-6">
+              <label>Aplicação</label>
+              <mat-select  [(value)]="aplicacaoFiltro" [compareWith]="compareItems" class="form-control">
+                <mat-option *ngFor="let data of aplicacoes" [value]="data.id">
+                   {{data.codigo}}
+                </mat-option>
+              </mat-select>
+            </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-3 form-inline">
+          <label>Data Inicio</label>
+          <input matInput [matDatepicker]="pickerIni" placeholder="Data" class="form-control" [(ngModel)]="dataIni" style="width:80%">
+          <mat-datepicker-toggle matSuffix [for]="pickerIni"></mat-datepicker-toggle>
+          <mat-datepicker #pickerIni></mat-datepicker>
+        </div>
+        <div class="col-lg-3 form-inline">
+            <label>Data Final</label>
+            <input matInput [matDatepicker]="pickerFim" placeholder="Data" class="form-control" [(ngModel)]="dataFim" style="width:80%">
+            <mat-datepicker-toggle matSuffix [for]="pickerFim"></mat-datepicker-toggle>
+            <mat-datepicker #pickerFim></mat-datepicker>
+        </div>
+        <div class="col-lg-6">
+          <label>Tipo Movimento</label>
+          <mat-select multiple [(value)]="tiposMovimentos" [compareWith]="compareItems" class="form-control">
+            <mat-option value="C">C</mat-option>
+            <mat-option value="V">V</mat-option>
+            <mat-option value="DIV">DIV</mat-option>
+            <mat-option value="JCP">JCP</mat-option>
+            <mat-option value="REN">REN</mat-option>
+            <mat-option value="AMO">AMO</mat-option>
+
+          </mat-select>
+        </div>
+    </div>
+      <div class="row">
+      </div>
+  
+      <div class="row" style="padding-top:20px;">
+          <div class="col-lg-9">
+            <button class="btn btn-primary" (click)="filtrar()">Filtrar</button>
+          </div>
+      </div>
+    </div>
+  </mat-card>
+
+  <table mat-table [dataSource]="movimentosDataSource" class="mat-elevation-z8" matSort style="margin-top: 20px">
+  
+    <!-- Position Column -->
+    <ng-container matColumnDef="data">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Data </th>
+      <td mat-cell *matCellDef="let element"> {{element.data | date: 'dd/MM/yyyy'}} </td>
+    </ng-container>
+    <ng-container matColumnDef="banco">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Banco </th>
+      <td mat-cell *matCellDef="let element"> <span>{{element.banco.nome}} </span></td>
+    </ng-container>
+    <ng-container matColumnDef="codigoAplicacao">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Aplicação </th>
+      <td mat-cell *matCellDef="let element"> {{element.aplicacao.codigo}} </td>
+    </ng-container>
+    <ng-container matColumnDef="idTipoMovimento">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Movto </th>
+      <td mat-cell *matCellDef="let element"> {{element.idTipoMovimento}} </td>
+    </ng-container>
+    <ng-container matColumnDef="quantidade"> 
+      <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align:center"> Quantidade </th>
+      <td mat-cell *matCellDef="let element" style="text-align:right; padding-right: 10px;"> {{element.quantidade}} </td>
+    </ng-container>
+    <ng-container matColumnDef="valorUn"> 
+      <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align:center"> Valor Un</th>
+      <td mat-cell *matCellDef="let element" style="text-align:right; padding-right: 10px;"> {{element.valorUn | number:'0.2-2'}} </td>
+    </ng-container>
+    <ng-container matColumnDef="valorTotal">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align:center"> Total</th>
+      <td mat-cell *matCellDef="let element" style="text-align:right; padding-right: 10px;"> {{element.valorTotal | number:'0.2-2'}} </td>
+    </ng-container>
+    <ng-container matColumnDef="options">
+      <th mat-header-cell *matHeaderCellDef width="15%" style="text-align:center"> Options </th>
+      <td mat-cell *matCellDef="let element" style="text-align:center">
+          <button (click)="delete(element.id)" style="border: 0px;background: none;">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [pageSize]="10" showFirstLastButtons></mat-paginator>
+  <p class="big">
+  <button type="button" class="btn btn-primary" routerLink="/movimento/create"> Novo Movimento</button>
+  <button type="button" class="btn btn-secondary" routerLink="/estoque" style="margin-left: 10px"> Voltar</button>
+  </p> 

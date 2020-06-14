@@ -1,0 +1,96 @@
+
+<div class="header">
+  <h1>Controle Financeiro</h1>
+ 
+</div>        
+<mat-toolbar color="primary" style="margin-top: 0px;">
+<mat-toolbar-row>
+  <button mat-button [matMenuTriggerFor]="cadastro">Cadastros</button>
+  <button mat-button [matMenuTriggerFor]="movimentacao">Movimentação</button>
+  <button mat-button [matMenuTriggerFor]="posicao">Posição</button>
+  <button mat-button [matMenuTriggerFor]="irpf">IRPF</button>
+  <button mat-button [matMenuTriggerFor]="admin">Admin</button>
+</mat-toolbar-row>
+</mat-toolbar>
+
+<mat-menu #cadastro>
+<button mat-menu-item  routerLink="/banco">
+  <mat-icon>account_balance</mat-icon>
+  <span>Bancos</span>
+</button>
+<button mat-menu-item routerLink="/aplicacao">
+  <mat-icon>view_quilt</mat-icon>
+  <span>Aplicações</span>
+</button>
+<button mat-menu-item routerLink="/tipo">
+  <mat-icon>view_week</mat-icon>
+  <span>Tipos de Aplicação</span>
+</button>
+</mat-menu>
+<mat-menu #movimentacao>
+  <button mat-menu-item routerLink="/movimento">
+    <mat-icon>assignment</mat-icon> 
+    <span>Movimento</span>
+  </button>
+  <button mat-menu-item routerLink="/estoque">
+    <mat-icon>view_quilt</mat-icon>
+    <span>Estoque</span>
+  </button>
+  <button mat-menu-item routerLink="/estoque/list2">
+    <mat-icon>bar_chart</mat-icon>
+    <span>Dashboard</span>
+  </button>
+</mat-menu>
+<mat-menu #posicao >
+<button mat-menu-item routerLink="/posicao">
+  <mat-icon>assignment</mat-icon>
+  <span>Manutenção</span>
+</button>
+<button mat-menu-item routerLink="/posicao/dashboard">
+  <mat-icon>bar_chart</mat-icon>
+  <span>Dashboard</span>
+</button>
+</mat-menu>
+<mat-menu #irpf >
+  <button mat-menu-item routerLink="/irpf/list">
+    <mat-icon>assignment</mat-icon>
+    <span>Posição</span>
+  </button>
+</mat-menu>
+<mat-menu #admin >
+  <button mat-menu-item routerLink="/aplicacao/list2">
+    <mat-icon>assignment</mat-icon>
+    <span>Lista de Aplicações</span>
+  </button>
+  <button mat-menu-item routerLink="/movimento/list2">
+    <mat-icon>assignment</mat-icon>
+    <span>Lista de Movimentos</span>
+  </button>
+  <button mat-menu-item routerLink="/movimento/import">
+    <mat-icon>bar_chart</mat-icon>
+    <span>Importar Movimentação</span>
+  </button>
+  <button mat-menu-item routerLink="/cotacao/import">
+    <mat-icon>bar_chart</mat-icon>
+    <span>Importar Cotação</span>
+  </button>
+  <button mat-menu-item routerLink="/provento/import">
+    <mat-icon>bar_chart</mat-icon>
+    <span>Importar Proventos</span>
+  </button>
+  <button mat-menu-item routerLink="/estoque/admin">
+    <mat-icon>bar_chart</mat-icon>
+    <span>Atualizar Estoque</span>
+  </button>
+  <button mat-menu-item routerLink="/provento/admin">
+    <mat-icon>bar_chart</mat-icon>
+    <span>Atualizar Movimento de Proventos</span>
+  </button>
+
+</mat-menu>
+<app-notificacao></app-notificacao>
+<div class="container mt-5 mb-5 ">
+    
+<router-outlet></router-outlet>
+
+</div>

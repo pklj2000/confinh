@@ -1,0 +1,40 @@
+table {
+    width: 100%;
+  }
+
+  p.big {
+    line-height: 1.8;
+    padding-top: 20px;
+  }
+
+  .header-align-right{
+    display: flex;
+    padding: 21px 0;
+    justify-content: flex-end;
+  }
+
+  .card{
+      padding-left: 0px;
+      padding-top: 0px;
+      padding-right: 0px;
+  }
+  .card_filtro {
+    background-color: #CCE5FF
+   }
+
+   .card_title {
+    background-color: #CCE5FF;
+    height: 50px;
+    align-items: center;
+   }
+
+   .card_content {
+       padding-top: 20px;
+       padding-left: 20px;
+   }
+
+   .card_content-centered {
+    padding-top: 20px;
+    padding-left: 20px;
+    text-align: center;
+}

@@ -1,0 +1,70 @@
+<mat-card class="card_filtro">
+  <div class="form-group">
+    <div class="row">
+      <div class='col-lg-3 form-inline'>
+        <label style="margin-right: 10px;">Data Inicial: </label>
+          <input matInput [matDatepicker]="pickerIni" placeholder="Data" class="form-control" [(ngModel)]="dataInicio" style="width:80%">
+          <mat-datepicker-toggle matSuffix [for]="pickerIni"></mat-datepicker-toggle>
+          <mat-datepicker #pickerIni></mat-datepicker>
+      </div>
+      <div class='col-lg-3 form-inline'>
+        <label style="margin-right: 10px;">Data Final: </label>
+          <input matInput [matDatepicker]="pickerFim" placeholder="Data" class="form-control" [(ngModel)]="dataCorte" style="width:80%">
+          <mat-datepicker-toggle matSuffix [for]="pickerFim"></mat-datepicker-toggle>
+          <mat-datepicker #pickerFim></mat-datepicker>
+      </div>
+        <div class="col-lg-6">
+          <button class="btn btn-primary" (click)="RecalcularEstoque()" style="margin-top: 30px;">Filtrar</button>
+        </div>
+    </div>
+  </div>
+</mat-card>
+
+<table class="table table-striped">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">Aplicação</th>
+      <th scope="col"><p class="text-right">Quantidade</p></th>
+      <th scope="col"><p class="text-right">Custo Médio</p></th>
+      <th scope="col"><p class="text-right">Custo Total</p></th>
+      <th scope="col"><p class="text-right">Cotação<br> {{dataCotacao}}</p></th>
+      <th scope="col"><p class="text-right">Total Cotação</p></th>
+      <th scope="col"><p class="text-right">Saldo</p></th>
+      <th scope="col"><p class="text-right">%</p></th>
+    </tr>
+  </thead>
+  <ng-container *ngFor="let item of estoques">  
+  <tr *ngIf="item.quantidade != 0">
+  <td>{{item.nomeAplicacao}}</td>
+  <td><p class="text-right">{{item.quantidade | number:'1.0-0'}}</p></td>
+  <td><p class="text-right">{{item.valorMedio | number:'1.2-2'}}</p></td>  
+  <td><p class="text-right">{{item.total | number:'1.2-2'}}</p></td>  
+  <td><p class="text-right">{{item.valorCotacao | number:'1.2-2'}}</p></td>  
+  <td><p class="text-right">{{item.valorTotalCotacao | number:'1.2-2'}}</p></td>
+  <td><p class="text-right">{{item.saldo | number:'1.2-2'}}</p></td>
+  <td><p class="text-right">{{item.percentualGanho | number:'1.2-2'}}</p></td>
+  </tr>
+</ng-container>  
+</table>
+<br><br>
+<table class="table table-striped">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">Aplicação</th>
+      <th scope="col">Cnpj</th>
+      <th scope="col"><p class="text-right">Quantidade</p></th>
+      <th scope="col"><p class="text-right">Resultado</p></th>
+    </tr>
+  </thead>
+  <ng-container *ngFor="let item of vendas">  
+  <tr *ngIf="item.quantidade != 0">
+  <td>{{item.nomeAplicacao}}</td>
+  <td>{{item.cnpj}}</td>
+  <td><p class="text-right">{{item.quantidade | number:'1.0-0'}}</p></td>
+  <td><p class="text-right">{{item.total | number:'1.2-2'}}</p></td>  
+  </tr>
+</ng-container>  
+</table>
+
+<br>
+<app-movimento-provento-acum #gridMovimentoProventoAcum></app-movimento-provento-acum>

@@ -1,0 +1,7 @@
+
+ ::ng-deep mat-select{
+    outline: 0;
+    border-width: 0 0 2px;
+    border-color: silver;
+    color: yellow;
+}

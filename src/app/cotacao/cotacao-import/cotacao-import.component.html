@@ -1,0 +1,26 @@
+<form [formGroup]="CotacaoImportForm" class="container">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>Limpar Cotações</mat-card-title>
+    </mat-card-header>
+    <mat-card-actions>
+      <p class="big">
+        <button type="button" class="btn btn-danger" (click)="ExcluirCotacoes()"> Excluir Cotações</button>
+        </p> 
+  </mat-card-actions>
+  </mat-card>
+
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>Importar Cotações</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <textarea formControlName="content" matInput class="form-control" rows="10" ></textarea>
+  </mat-card-content>
+  <mat-card-actions>
+    <p class="big">
+      <button type="button" class="btn btn-primary" (click)="ImportarCotacoes()"> Importar Cotações</button>
+      </p> 
+</mat-card-actions>
+</mat-card>
+</form>

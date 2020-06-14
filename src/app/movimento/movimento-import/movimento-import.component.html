@@ -1,0 +1,31 @@
+<form [formGroup]="MovimentoImportForm" class="container">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>Limpar Movimentações</mat-card-title>
+    </mat-card-header>
+    <mat-card-actions>
+      <p class="big">
+        <button type="button" class="btn btn-danger" (click)="ExcluirMovimentos()" disabled> Excluir Movimentos</button>
+        </p> 
+  </mat-card-actions>
+  </mat-card>
+
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>Importar Movimentações</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <textarea formControlName="content" matInput class="form-control" rows="10" ></textarea>
+  </mat-card-content>
+  <mat-card-actions>
+    <p class="big">
+      <button type="button" class="btn btn-primary" (click)="ImportarMovimentos()"> Importar Movimentos</button>
+      </p> 
+</mat-card-actions>
+<mat-card-footer>
+  2020-01-01;C;PETR4;100;45.10;4510.00<br>
+  2020-02-02;V;PETR4;100;50;5000
+</mat-card-footer>
+</mat-card>
+{{resultMessage}}
+</form>

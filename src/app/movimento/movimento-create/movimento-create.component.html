@@ -1,0 +1,83 @@
+<mat-card>
+<form [formGroup]="movimentoForm" (ngSubmit)="onSubmit()" class="container">
+    <div class='form-group'>
+      <div class='form-group row'>
+        <div class='col-lg-3 text-right'>
+          <label>Data:</label>
+        </div>
+        <div class='col-lg-9 form-inline'>
+            <input formControlName="data" matInput [matDatepicker]="picker" placeholder="Data" class="form-control" >
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </div>
+      </div>
+  
+      <div class='form-group row'>
+          <div class='col-lg-3 text-right'>
+            <label>Banco:</label>
+          </div>
+          <div class='col-lg-9'>     
+              <mat-select  [(ngModel)]="bancoFiltro" formControlName="banco"  class="form-control">
+                  <mat-option *ngFor="let banco of bancos | async" [value]="banco.id">  
+                      {{banco.nome}}
+                  </mat-option>
+               </mat-select>
+
+          </div>
+        </div>
+  
+        <div class='form-group row'>
+            <div class='col-lg-3 text-right'>
+              <label>Aplicacao:</label>
+            </div>
+            <div class='col-lg-9'>
+                <mat-select  formControlName="aplicacao" class="form-control">
+                    <mat-option *ngFor="let aplicacao of aplicacoes | async" [value]="aplicacao.id">
+                        {{aplicacao.codigo}}
+                    </mat-option>
+                 </mat-select>
+            </div>
+          </div>
+  
+          <div class='form-group row'>
+              <div class='col-lg-3 text-right'>
+                <label>Movimento:</label>
+              </div>
+              <div class='col-lg-9'>
+                  <mat-select  formControlName="movimento" class="form-control">
+                      <mat-option value="C">Compra</mat-option> 
+                      <mat-option value="V">Venda</mat-option> 
+                   </mat-select>
+              </div>
+            </div>
+            <div class='form-group row'>
+                <div class='col-lg-3 text-right'>
+                  <label>Quantidade:</label>
+                </div>
+                <div class='col-lg-9'>
+                  <input type="text" formControlName="quantidade" class='form-control'>
+                </div>
+              </div>
+              <div class='form-group row'>
+                  <div class='col-lg-3 text-right'>
+                    <label>Preço:</label>
+                  </div>
+                  <div class='col-lg-9'>
+                    <input type="text" formControlName="valor" class='form-control'>
+                  </div>
+                </div>
+                <div class='row'>
+                    <div class='col-lg-3 text-right'>
+                      <label>Total:</label>
+                    </div>
+                    <div class='col-lg-9'>
+                      <input type="text" formControlName="total1" class='form-control' readonly>
+                    </div>
+                  </div>
+      </div>
+      <div class="text-center">
+        <button type="submit" [disabled]="!movimentoForm.valid" class="btn btn-primary">Salvar</button>
+        <button class="btn btn-default" routerLink="/movimento">Cancelar</button>
+      </div>
+  </form>
+</mat-card>
